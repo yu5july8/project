@@ -32,7 +32,8 @@ months = [
 
 #main function and create list of csv file
 def main():
-    reservation = get_info()
+    get_info()
+    reservation = list_creator()
     print("You Successfuilly reserved your flight")
 
 
@@ -45,10 +46,10 @@ def get_info():
 
 
 def list_creator():
-    reservation = []
-    reserv = ['name', 'date', 'destination', 'email']
-    with open(reservation, "w") as csvfiles:
-            writer = csv.DictWriter(csvfiles, fieldnames= reserv)
+    reservation = {}
+    reserv =  [f'name', 'date', 'destination', 'email']
+    with open(reservation, 'w') as csvfiles:
+            writer = csv.DictWriter(csvfiles, fieldnames = reserv)
             writer.writeheader()
             for reservation in writer:
                 name = get_name(reservation["name"])
@@ -56,7 +57,7 @@ def list_creator():
                 destination = get_destination(reservation["destination"])
                 email = get_email(reservation["email"])
                 writer.writerow({"name": name, "date": date, "destination": destination, "email": email})
-    print(tabulate(reservation[1:], fieldnames = reserv, tablefmt= "grid"))
+    return (tabulate(reservation[1:], fieldnames = reserv, tablefmt = "grid"))
 
 def get_name():
     if len(sys.argv) > 4:
