@@ -9,7 +9,7 @@
 #import
 import sys
 import csv
-from tabulate import tabulate
+from tabulate import tabulatea
 import validators
 
 
@@ -48,6 +48,7 @@ def get_info():
 def list_creator():
     reserv =  ['name', 'date', 'destination', 'email']
     with open('reservation.csv', 'w') as csvfiles:
+            reservation = csv.writer
             writer = csv.DictWriter(csvfiles, fieldnames = reserv)
             writer.writeheader()
             for reservation in writer:
