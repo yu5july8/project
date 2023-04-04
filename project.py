@@ -9,7 +9,7 @@
 #import
 import sys
 import csv
-from tabulate import tabulatea
+from tabulate import tabulate
 import validators
 
 
@@ -32,32 +32,35 @@ months = [
 
 #main function and create list of csv file
 def main():
-    get_info()
-    list_creator()
+    myReservation = get_info()
+    list_creator(myReservation)
     print("You Successfuilly reserved your flight")
 
 
 def get_info():
-    name = input("What is your name?: ").strip().capitalize()
-    date = input("when is the date of yoru travel?: ").strip()
-    destination = input("where is your destination?: ").strip().capitalize()
-    email = (input("What is your email?: ")).strip()
-    return {name, date, destination, email}
+    # name = input("What is your name?: ").strip().capitalize()
+    # date = input("when is the date of yoru travel?: ").strip()
+    # destination = input("where is your destination?: ").strip().capitalize()
+    # email = (input("What is your email?: ")).strip()
+    # return [name, date, destination, email]
+    return ["Noelle", "4/6/23", "Paris", "sample@gmail.com"]
 
 
-def list_creator():
+def list_creator(myReservation):
     reserv =  ['name', 'date', 'destination', 'email']
     with open('reservation.csv', 'w') as csvfiles:
-            reservation = csv.writer
             writer = csv.DictWriter(csvfiles, fieldnames = reserv)
             writer.writeheader()
-            for reservation in writer:
-                name = get_name(reservation["name"])
-                date = get_date(reservation["date"])
-                destination = get_destination(reservation["destination"])
-                email = get_email(reservation["email"])
-                writer.writerow({"name": name, "date": date, "destination": destination, "email": email})
-    return (tabulate(reservation[1:], fieldnames = reserv, tablefmt = "grid"))
+            print(myReservation)
+            name = myReservation[0]
+            date = myReservation[1]
+            destination = myReservation[2]
+            email = myReservation[3]
+            myDict = {'name': name, 'date': date, 'destination': destination, 'email': email}
+            writer.writerow(myDict)
+            print(myDict)
+            table = tabulate(myDict, headers=reserv, tablefmt = "grid")
+            print(table)
 
 def get_name():
     if len(sys.argv) > 4:
