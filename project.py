@@ -43,7 +43,7 @@ def get_info():
     # destination = input("where is your destination?: ").strip().capitalize()
     # email = (input("What is your email?: ")).strip()
     # return [name, date, destination, email]
-    return ["Noelle", "4/6/23", "Paris", "sample@gmail.com"]
+    return ["Yugo", "4/6/23", "Japan", "sample@gmail.com"]
 
 
 def list_creator(myReservation):
