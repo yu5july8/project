@@ -1,4 +1,4 @@
-from project import get_info()
+from project import name, date, destination, email
 
 def main():
     name_check()
@@ -8,17 +8,23 @@ def main():
 
 
 def name_check():
-    assert list_creator("Yugo Iwamoto") == True
+    assert name("Stephen Jacob Smith Tom")== False
+    assert name("Yugo Iwamoto") == True
 
 def date_validation():
-    assert list_creator("11/22/2024") == True
+    assert date("11/22/2024") == True
+    assert date("November 22, 2024")== True
+    assert date("121122")== False
 
 
 def destination_confirm():
-    assert list_creator("Rochester") == True
+    assert destination("Rochester") == True
+    assert destination("Chicago")== True
 
 def validate_email():
-    assert list_creator("yu5.july8@gmail.com") == True
+    assert email("yu5.july8@gmail.com") == True
+    assert email("sample@brockport.edu")== True
+    assert email("1234567") == False
 
 
 if __name__ == "__main__":
