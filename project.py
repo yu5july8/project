@@ -38,12 +38,13 @@ def main():
 
 
 def get_info():
-    # name = input("What is your name?: ").strip().capitalize()
-    # date = input("when is the date of yoru travel?: ").strip()
-    # destination = input("where is your destination?: ").strip().capitalize()
-    # email = (input("What is your email?: ")).strip()
-    # return [name, date, destination, email]
-    return ["Yugo", "4/6/23", "Japan", "sample@gmail.com"]
+    name = input("What is your name?: ").strip().capitalize()
+    date = input("when is the date of yoru travel?: ").strip()
+    destination = input("where is your destination?: ").strip().capitalize()
+    email = (input("What is your email?: ")).strip()
+    return name, date, destination, email
+
+
 
 
 def list_creator(myReservation):
@@ -62,16 +63,16 @@ def list_creator(myReservation):
             table = tabulate(myDict, headers=reserv, tablefmt = "grid")
             print(table)
 
-def get_name():
+def name():
     if len(sys.argv) > 4:
         sys.exit("Invalid name")
     elif len(sys.argv) < 3:
         sys.exit("Invalid name")
 
-def get_date():
-    if "/" in get_date:
+def date():
+    if "/" in date:
         try:
-            month,day ,year = get_date.split("/")
+            month,day ,year = date.split("/")
             month = int(month)
             day = int(day)
             year = int(year)
@@ -86,7 +87,7 @@ def get_date():
                 return()
     else:
         try:
-            month, day, year = get_date.split(" ")
+            month, day, year = date.split(" ")
             if ("," in day):
                 day = day.replace(","," ")
                 year = int(year)
@@ -106,14 +107,14 @@ def get_date():
         except:
             return()
 
-def get_destination():
+def destination():
     if len(sys.argv) > 1:
         sys.exit("Please input something")
     elif len(sys.argv) < 3:
         sys.exit("Invalid destination")
 
 
-def get_email(s):
+def email(s):
     if validators.email(s)== True:
         return f"Valid"
     else:
