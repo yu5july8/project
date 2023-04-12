@@ -1,13 +1,12 @@
 ###
 #Airline reservation system
-#video demo: <URL: >
+#video demo: <URL: https://youtu.be/CvPOBR_jCUM>
 #Description:
 #input PAX info and create a list of passengers like airline reservation system. keep record of name and a
 #utomatically assign seats basically reservation system of airline
 ###
 
 #import
-import sys
 import csv
 from tabulate import tabulate
 import validators
@@ -39,12 +38,10 @@ def main():
 
 def get_info():
     name = input("What is your name?: ").strip().capitalize()
-    date = input("when is the date of yoru travel?: ").strip()
+    date = input("when is the date of your travel?: ").strip()
     destination = input("where is your destination?: ").strip().capitalize()
     email = (input("What is your email?: ")).strip()
     return name, date, destination, email
-
-
 
 
 def list_creator(myReservation):
@@ -63,16 +60,20 @@ def list_creator(myReservation):
             table = tabulate(myDict, headers=reserv, tablefmt = "grid")
             print(table)
 
-def name():
-    if len(sys.argv) > 4:
-        sys.exit("Invalid name")
-    elif len(sys.argv) < 3:
-        sys.exit("Invalid name")
+def name(name):
+    name = name.split(" ")
+    if len(name) > 4:
+        return "Too Many Inputs"
+    elif len(name) == 0:
+        return "Not Enough Inputs"
+    else:
+        return "Name Check Passed"
 
-def date():
+
+def date(date):
     if "/" in date:
         try:
-            month,day ,year = date.split("/")
+            month,day,year = date.split("/")
             month = int(month)
             day = int(day)
             year = int(year)
@@ -107,11 +108,12 @@ def date():
         except:
             return()
 
-def destination():
-    if len(sys.argv) > 1:
-        sys.exit("Please input something")
-    elif len(sys.argv) < 3:
-        sys.exit("Invalid destination")
+def destination(destination):
+    destination = destination.split(" ")
+    if len(destination) != 1 or destination[0] == "":
+        return "Invalid Destination. Try replacing spaces (' ') with a dash ('-')"
+    else:
+        return "Destination Confirmed"
 
 
 def email(s):
